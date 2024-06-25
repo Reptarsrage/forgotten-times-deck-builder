@@ -12,11 +12,6 @@ export interface PostImportRequest {
   version: string
 }
 
-export interface GetCardsResponse {
-    cards: NakedCardMeta[]
-    version: string
-}
-
 export const POST = withApiAuthRequired(async function importCards(req) {
   const res = new NextResponse()
   const data: PostImportRequest = await req.json()
