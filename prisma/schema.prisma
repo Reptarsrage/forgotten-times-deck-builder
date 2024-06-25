@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
+}
+
+model Card {
+    id            String  @id @default(cuid())
+    name          String
+    text          String
+    subtype       String
+    type          String // guardian, spell, enchantment, relic, runeseeker
+    invokeFor     Int?
+    devotion      String? // order, chaos
+    devotionCount Int?
+    health        Int?
+    power         Int?
+    cost          Int?
+
+    meta CardMeta?
+
+    version   Version @relation(fields: [versionId], references: [id])
+    versionId String
+
+    decks DecksCards[]
+}
+
+model CardMeta {
+    id           String  @id @default(cuid())
+    ttsCardId    String
+    faceURL      String
+    backURL      String
+    numWidth     Int
+    numHeight    Int
+    backIsHidden Boolean
+    uniqueBack   Boolean
+    type         Int
+
+    card   Card   @relation(fields: [cardId], references: [id])
+    cardId String @unique
+}
+
+model Version {
+    id        String   @id @default(cuid())
+    name      String   @unique
+    createdAt DateTime @default(now()) @map(name: "created_at")
+    cards     Card[]
+}
+
+model DecksCards {
+    deck   Deck   @relation(fields: [deckId], references: [id])
+    deckId String
+    card   Card   @relation(fields: [cardId], references: [id])
+    cardId String
+
+    quantity Int
+
+    @@id([deckId, cardId])
+}
+
+model Deck {
+    id        String       @id @default(cuid())
+    name      String
+    cards     DecksCards[]
+    createdAt DateTime     @default(now()) @map(name: "created_at")
+    userId    String
+}
