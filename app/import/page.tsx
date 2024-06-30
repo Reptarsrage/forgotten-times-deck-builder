@@ -43,7 +43,7 @@ async function ImportPage() {
   return (
     <>
       <h1 className="text-4xl font-bold capitalize">Import cards</h1>
-      <span className="text-slate-800 bg-slate-300 rounded px-2">{version}</span>
+      <span className="bg-slate-300 dark:bg-slate-700 rounded px-2">{version}</span>
       <ImportCards cards={cards} version={version} />
     </>
   )

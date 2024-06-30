@@ -22,13 +22,13 @@ export default function RootLayout({
       <UserProvider>
         <body className={clsx("flex flex-col min-h-100", inter.className)}>
           <Nav />
-          <main className='flex flex-1 flex-col bg-slate-100'>
-            <div className='flex flex-1 flex-col max-w-4xl m-auto p-8 w-full'>
+          <main className='flex flex-1 flex-col bg-slate-100 dark:bg-slate-900'>
+            <div className='flex flex-1 flex-col max-w-4xl m-auto p-8 w-full gap-4'>
                 {children}
             </div>
           </main>
-          <footer className='bg-slate-50 p-4'>
-            <p className='text-center text-sm text-slate-800'>
+          <footer className='bg-slate-50 dark:bg-slate-950 p-4'>
+            <p className='text-center text-sm'>
             😀 Made by <a className='underline' href="https://github.com/Reptarsrage/">Reptarsrage</a>
             </p>
           </footer>

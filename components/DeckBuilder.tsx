@@ -136,12 +136,12 @@ export default function DeckBuilder(props: DeckBuilderProps) {
               <div key={card.id} className="flex">
                 <span className="ml-2">
                   {card.quantity}x{' '}
-                  <Link className="underline text-blue-600" href={card.meta.faceURL} target="_blank">
+                  <Link className="underline" href={card.meta.faceURL} target="_blank">
                     {card.name}
                   </Link>
                 </span>
 
-                <button className="ml-auto text-red-600" onClick={() => removeCardFromDeck(card)}>
+                <button className="ml-auto text-red-500" onClick={() => removeCardFromDeck(card)}>
                   x
                 </button>
               </div>

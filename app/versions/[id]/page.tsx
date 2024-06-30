@@ -36,7 +36,7 @@ export default withPageAuthRequired(async function VersionPage({ params }) {
     <div className='gap-4 flex flex-col justify-start'>
         <div className='flex justify-between items-baseline'>
       <h1 className="text-4xl font-bold capitalize">Edit cards</h1>
-      <span className="text-slate-800 bg-slate-300 rounded px-2">{version.name}</span>
+      <span className="bg-slate-300 dark:bg-slate-700 rounded px-2">{version.name}</span>
       </div>
       <EditCards cards={cards} />
     </div>

@@ -16,7 +16,7 @@ async function VersionsPage() {
   return (
     <>
       <div className="flex items-baseline justify-between">
-        <h1 className="text-4xl text-slate-800 mb-4 w-1/2">Versions</h1>
+        <h1 className="text-4xl mb-4 w-1/2">Versions</h1>
         <a
           className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded uppercase flex gap-2"
           href="/import"
@@ -27,10 +27,10 @@ async function VersionsPage() {
       </div>
       <div className="flex flex-1 flex-col gap-2">
         {versions.map((version) => (
-          <Link key={version.id} href={`/versions/${version.id}`} className="bg-slate-50 p-4">
+          <Link key={version.id} href={`/versions/${version.id}`} className="bg-slate-50 dark:bg-slate-950 p-4">
             <span className="flex gap-4">
               <span className="font-bold mr-auto">{version.name}</span>
-              <span className="text-slate-800">{version.createdAt.toLocaleString()}</span>
+              <span className="">{version.createdAt.toLocaleString()}</span>
             </span>
           </Link>
         ))}

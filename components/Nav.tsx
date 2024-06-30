@@ -11,8 +11,8 @@ export default async function Nav() {
   const session = await isAdmin()
 
   return (
-    <header className="flex p-2 gap-2 bg-slate-50 items-baseline">
-      <Link href="/" className="text-2xl font-bold text-slate-800">
+    <header className="flex p-2 gap-2 bg-slate-50 dark:bg-slate-950 items-baseline">
+      <Link href="/" className="text-2xl font-bold">
         <Image
           src="/icon-200x200.png"
           alt="Forgotton Times TCG Deck Builder"
