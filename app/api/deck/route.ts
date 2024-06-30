@@ -5,6 +5,7 @@ import { NextResponse } from 'next/server'
 export interface PostDeckRequest {
   id?: string
   userId: string
+  versionId: string
   name: string
   cards: {
     id: string
@@ -23,6 +24,7 @@ export const POST = withApiAuthRequired(async function createDeck(req) {
       },
       data: {
         name: request.name,
+        versionId: request.versionId,
         cards: {
           upsert: request.cards.map((card) => ({
             where: {
@@ -53,6 +55,7 @@ export const POST = withApiAuthRequired(async function createDeck(req) {
   const createDeck = await prisma.deck.create({
     data: {
       userId: request.userId,
+      versionId: request.versionId,
       name: request.name,
       cards: {
         create: request.cards.map((card) => ({
@@ -64,7 +67,7 @@ export const POST = withApiAuthRequired(async function createDeck(req) {
           },
         })),
       },
-    }
+    },
   })
 
   return NextResponse.json(createDeck, res)

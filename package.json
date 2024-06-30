@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^3.5.0",
+    "@heroicons/react": "^2.1.4",
     "@prisma/client": "^5.15.1",
     "clsx": "^2.1.1",
     "jwt-decode": "^4.0.0",

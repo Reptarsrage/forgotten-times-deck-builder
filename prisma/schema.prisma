@@ -51,6 +51,7 @@ model Version {
     name      String   @unique
     createdAt DateTime @default(now()) @map(name: "created_at")
     cards     Card[]
+    decks     Deck[]
 }
 
 model DecksCards {
@@ -70,4 +71,6 @@ model Deck {
     cards     DecksCards[]
     createdAt DateTime     @default(now()) @map(name: "created_at")
     userId    String
+    version   Version      @relation(fields: [versionId], references: [id])
+    versionId String
 }

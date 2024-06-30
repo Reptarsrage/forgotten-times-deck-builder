@@ -1,14 +1,19 @@
 import { getSession } from '@auth0/nextjs-auth0'
 
 const NAMESPACE = 'https://github.com/Reptarsrage'
+const ADMIN_ROLE = 'deckbuilder-admin'
 
 export async function isAdmin() {
-  const user = await getSession()
-
-  if (user?.[`${NAMESPACE}/roles`]?.includes('admin')) {
-    return true
+  const session = await getSession()
+  if (!session) {
+    return null
   }
 
-  return false
-}
+  const { user } = session
+  const hasAdminRole = user?.[`${NAMESPACE}/roles`]?.includes(ADMIN_ROLE) ?? false
 
+  return {
+    ...session,
+    hasAdminRole,
+  }
+}
